@@ -19,4 +19,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('books', BookController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+    Route::patch('/books/{book}/mark-as-read', [BookController::class, 'markAsRead'])->name('books.markAsRead');
+    Route::patch('/books/{book}/mark-as-unread', [BookController::class, 'markAsUnread'])->name('books.markAsUnread');
+    
 require __DIR__.'/auth.php';

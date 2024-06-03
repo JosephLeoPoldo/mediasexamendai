@@ -11,7 +11,9 @@ protected $fillable = [
     'year',
     'synopsis',
     'cover_url',
+    'status',
 ];
+
 public function user()
 {
     return $this->belongsTo(User::class);

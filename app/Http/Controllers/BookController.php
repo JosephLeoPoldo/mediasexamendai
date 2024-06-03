@@ -51,4 +51,18 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect()->route('books.index');
-    }}
+    }
+    public function markAsRead(Book $book)
+    {
+        $book->update(['status' => true]);
+        return redirect()->route('books.index')->with('success', 'Libro marcado como leído.');
+    }
+    
+    public function markAsUnread(Book $book)
+    {
+        $book->update(['status' => false]);
+        return redirect()->route('books.index')->with('success', 'Libro marcado como pendiente.');
+    }
+    
+
+}
